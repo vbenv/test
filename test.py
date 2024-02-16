@@ -40,19 +40,19 @@ def my_sort(arr):
 def ur_sort(arr):
     n = len(arr)
     for i in range(0, n - 1):
-        minIdx = i
+        idx = i
         for k in range(i + 1, n):
-            if (arr[minIdx] > arr[k]):
-                minIdx = k
+            if (arr[idx] > arr[k]):
+                idx = k
         tmp = arr[i]
-        arr[i] = arr[minIdx]
-        arr[minIdx] = tmp
+        arr[i] = arr[idx]
+        arr[idx] = tmp
 
     return arr
 
 
-def mst(graph):  # 이 함수 안에서 필요에 따라 ur_sort 또는 my_sort를 호출하고 정렬 시간을 출력한다
-    pass
+#def mst(graph):  # 이 함수 안에서 필요에 따라 ur_sort 또는 my_sort를 호출하고 정렬 시간을 출력한다
+
 
 
 # 그래프 정의 [u, v, w, p] 쌍으로 u와 v는 도시 정점, w는 도로 건설 비용, p는 포켓몬 객체
@@ -69,11 +69,10 @@ graph = [
     [3, 5, 13, Pokemon('갸라도스', 75)]
 ]
 
+
 num_nodes = 6
-print(ur_sort(graph))
-print(my_sort(graph))
-# r, c = mst(graph)
-# print(f"MST: {r}\nMin Cost: {c}")
+r, c = mst(graph)
+print(f"MST: {r}\nMin Cost: {c}")
 
 
 # ur_sort를 사용한 출력 결과
