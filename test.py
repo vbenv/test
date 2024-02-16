@@ -27,12 +27,28 @@ class Pokemon:
         return self.name
 
 
+
 def my_sort(arr):
-    pass
+    n = len(arr)
+    for end in range(n - 1, 0, -1):
+        for cur in range(0, end):
+            if (arr[cur] > arr[cur + 1]):
+                arr[cur], arr[cur + 1] = arr[cur + 1], arr[cur]
+    return arr
 
 
 def ur_sort(arr):
-    pass
+    n = len(arr)
+    for i in range(0, n - 1):
+        minIdx = i
+        for k in range(i + 1, n):
+            if (arr[minIdx] > arr[k]):
+                minIdx = k
+        tmp = arr[i]
+        arr[i] = arr[minIdx]
+        arr[minIdx] = tmp
+
+    return arr
 
 
 def mst(graph):  # 이 함수 안에서 필요에 따라 ur_sort 또는 my_sort를 호출하고 정렬 시간을 출력한다
@@ -54,8 +70,10 @@ graph = [
 ]
 
 num_nodes = 6
-r, c = mst(graph)
-print(f"MST: {r}\nMin Cost: {c}")
+print(ur_sort(graph))
+print(my_sort(graph))
+# r, c = mst(graph)
+# print(f"MST: {r}\nMin Cost: {c}")
 
 
 # ur_sort를 사용한 출력 결과
